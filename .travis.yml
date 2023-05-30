@@ -6,26 +6,24 @@ cache:
 
 node_js:
   - '12'
-
 git:
   depth: 3
 
 script:
-  - yarn build
+  - yarn test
 notifications:
+  slack: movicaremx:FdziNfqxPS0SXgKzNHDdA9mn
   email:
     recipients:
-      - dulce.mg.19@gmail.com
       - garpzos2001@gmail.com
     on_success: always
     on_failure: always
+
 deploy:
-  provider: pages
-  skip-cleanup: true
+  provide: heroku
+  cleanup: true
   keep-history: true
-  github-token: $GITHUB_TOKEN
-  local-dir: dist/
-  target-branch: gh-pages
-  commit_message: "Deploy del proyecto"
+  api_key: apikey
+  app: platzi-backend
   on:
-    branch: master
+    repo: Arcani18/platzi-store-backend
